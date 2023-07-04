@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>حساب العمر</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+	<h1>حساب العمر</h1>
+	<form>
+		<label for="birthdate">تاريخ الميلاد:</label>
+		<input type="date" id="birthdate" name="birthdate">
+		<button type="button" onclick="calculateAge()">حساب</button>
+	</form>
+	<p id="result"></p>
+	<script>
+		function calculateAge() {
+			var birthdate = new Date(document.getElementById("birthdate").value);
+			var today = new Date();
+			var age = today.getFullYear() - birthdate.getFullYear();
+			var m = today.getMonth() - birthdate.getMonth();
+			if (m < 0 || (m === 0 && today.getDate() < birthdate.getDate())) {
+				age--;
+			}
+			document.getElementById("result").innerHTML = "عمرك هو " + age;
+		}
+	</script>
+</body>
+</html>
